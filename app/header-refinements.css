@@ -1,0 +1,34 @@
+.main-nav .nav-item {
+  border-radius: 999px;
+}
+
+.main-nav .nav-item-active {
+  border-radius: 999px;
+  background: var(--nav-active);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.main-nav .nav-item-active:hover {
+  border-radius: 999px;
+  background: var(--nav-active);
+}
+
+.home-nav-divider {
+  width: 1px;
+  height: 22px;
+  flex: 0 0 1px;
+  margin: 0 4px;
+  background: var(--line-strong);
+}
+
+@media (max-width: 720px) {
+  .main-nav .nav-item,
+  .main-nav .nav-item-active {
+    border-radius: 999px;
+  }
+
+  .home-nav-divider {
+    height: 21px;
+    margin: 0 2px;
+  }
+}
