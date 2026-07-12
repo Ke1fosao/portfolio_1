@@ -15,9 +15,10 @@ export function Dnz52StoryController() {
     let frameId = 0;
 
     const setActive = (activeIndex: number) => {
-      root.dataset.activeChapter = String(activeIndex);
+      const navigationIndex = Math.min(activeIndex, Math.max(links.length - 1, 0));
+      root.dataset.activeChapter = String(navigationIndex);
       links.forEach((link, index) => {
-        const isActive = index === activeIndex;
+        const isActive = index === navigationIndex;
         link.classList.toggle("is-active", isActive);
         if (isActive) link.setAttribute("aria-current", "true");
         else link.removeAttribute("aria-current");
