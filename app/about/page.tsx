@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AboutPortraitHero } from "@/components/about/about-portrait-hero";
 import { AboutStoryController } from "@/components/about/about-story-controller";
 
 export const metadata: Metadata = {
@@ -20,7 +21,7 @@ const principles = [
   ["01", "Спочатку сенс", "Починаю не з кольорів і кнопок, а з питання: що має змінитися для бізнесу після запуску?"],
   ["02", "Відповідальність за все", "Сам проєктую інтерфейс, пишу frontend і backend, працюю з базою даних та доводжу продукт до деплою."],
   ["03", "Складне — простими словами", "Пояснюю рішення без технічного туману, щоб власник розумів, за що платить і як працюватиме система."],
-  ["04", "Результат важливіший за ефект", "Анімація, AI або адмінпанель потрібні лише тоді, коли вони реально допомагають користувачу чи команді."],
+  ["04", "Результат важливіший за ефект", "Анімація, AI або адмінпанель потрібні лише тоді, коли вони реально допомагають користувачу чи команді."]
 ];
 
 const technologies = [
@@ -128,54 +129,7 @@ export default function AboutPage() {
   return (
     <div className="ab-page" data-about-root data-active-chapter="0">
       <AboutStoryController />
-
-      <section className="ab-hero" data-about-chapter aria-labelledby="about-title">
-        <div className="ab-noise" aria-hidden="true" />
-        <div className="ab-hero-grid" aria-hidden="true" />
-        <div className="ab-hero-frame">
-          <div className="ab-hero-meta">
-            <span>Дмитро Ковтунович</span>
-            <span>18 років · Рівне</span>
-          </div>
-
-          <div className="ab-hero-layout">
-            <div className="ab-hero-copy">
-              <p className="ab-kicker">Моя історія / не коротке резюме</p>
-              <h1 id="about-title">
-                Я не починав із готових рішень.
-                <span>Я вчився збирати їх сам.</span>
-              </h1>
-              <p className="ab-hero-lead">
-                Від перших невеликих програм і десятків помилок — до full-stack систем,
-                які приймають заявки, керують процесами та допомагають бізнесу працювати простіше.
-              </p>
-              <div className="ab-hero-actions">
-                <a href="#story" className="ab-button ab-button-primary">Пройти історію <span>↓</span></a>
-                <Link href="/work" className="ab-button ab-button-secondary">Переглянути роботи <Arrow /></Link>
-              </div>
-            </div>
-
-            <div className="ab-identity" aria-hidden="true">
-              <div className="ab-identity-orbit is-one" />
-              <div className="ab-identity-orbit is-two" />
-              <div className="ab-identity-orbit is-three" />
-              <div className="ab-identity-mark"><span>D</span><span>K</span></div>
-              <div className="ab-identity-label is-top">FULL-STACK</div>
-              <div className="ab-identity-label is-right">RIVNE / UA</div>
-              <div className="ab-identity-label is-bottom">BUILD · LEARN · IMPROVE</div>
-              <i className="ab-identity-dot is-a" />
-              <i className="ab-identity-dot is-b" />
-              <i className="ab-identity-dot is-c" />
-            </div>
-          </div>
-
-          <div className="ab-hero-footer">
-            <span>Scroll to read</span>
-            <i><b /></i>
-            <span>00 / 05</span>
-          </div>
-        </div>
-      </section>
+      <AboutPortraitHero />
 
       <section className="ab-story" id="story">
         <aside className="ab-rail" aria-label="Розділи історії">
