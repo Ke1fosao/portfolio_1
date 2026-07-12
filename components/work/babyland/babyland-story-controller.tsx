@@ -6,12 +6,23 @@ export function BabylandStoryController() {
   useEffect(() => {
     const root = document.querySelector<HTMLElement>("[data-babyland-root]");
     const chapters = Array.from(document.querySelectorAll<HTMLElement>("[data-babyland-chapter]"));
+    const navigationLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-babyland-nav]"));
 
     if (!root || chapters.length === 0) return;
 
     root.classList.add("bl-motion-ready");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let frameId = 0;
+
+    const setActiveChapter = (activeIndex: number) => {
+      root.dataset.activeChapter = String(activeIndex);
+      navigationLinks.forEach((link, index) => {
+        const isActive = index === activeIndex;
+        link.classList.toggle("is-active", isActive);
+        if (isActive) link.setAttribute("aria-current", "true");
+        else link.removeAttribute("aria-current");
+      });
+    };
 
     const updateProgress = () => {
       const rect = root.getBoundingClientRect();
@@ -26,13 +37,13 @@ export function BabylandStoryController() {
       frameId = window.requestAnimationFrame(updateProgress);
     };
 
+    setActiveChapter(0);
     updateProgress();
     window.addEventListener("scroll", requestProgressUpdate, { passive: true });
     window.addEventListener("resize", requestProgressUpdate);
 
     if (reducedMotion || !("IntersectionObserver" in window)) {
       chapters.forEach((chapter) => chapter.classList.add("is-visible"));
-      root.dataset.activeChapter = "0";
 
       return () => {
         root.classList.remove("bl-motion-ready");
@@ -61,7 +72,7 @@ export function BabylandStoryController() {
           }
         });
 
-        root.dataset.activeChapter = String(activeIndex);
+        setActiveChapter(activeIndex);
       },
       {
         rootMargin: "-12% 0px -20% 0px",
