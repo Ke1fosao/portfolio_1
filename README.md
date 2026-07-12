@@ -31,15 +31,17 @@ npm run dev
 
 Відкрийте `http://localhost:3000`.
 
-## Перед деплоєм
+## Змінні середовища
 
-Замініть `https://portfolio.example.com` у:
+Скопіюйте `.env.example` у `.env.local` і вкажіть адресу сайту:
 
-- `app/layout.tsx`;
-- `app/sitemap.ts`;
-- `app/robots.ts`.
+```env
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
 
-Після цього виконайте:
+На Vercel замініть значення на фінальний домен або адресу деплою. Ця змінна автоматично використовується для metadata, Open Graph, sitemap і robots.
+
+## Перевірка
 
 ```bash
 npm run typecheck
