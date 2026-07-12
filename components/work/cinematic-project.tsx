@@ -21,6 +21,7 @@ function statusClass(status: Project["status"]) {
 
 export function CinematicProject({ project, index, reverse = false, featured = false }: CinematicProjectProps) {
   const projectNumber = String(index + 1).padStart(2, "0");
+  const hasPrivateRepository = project.slug === "babyland";
 
   return (
     <article
@@ -65,7 +66,11 @@ export function CinematicProject({ project, index, reverse = false, featured = f
                 Живий сайт <Arrow />
               </a>
             ) : null}
-            {project.repository ? (
+            {hasPrivateRepository ? (
+              <span className="wk-case-link is-private" role="note">
+                <i aria-hidden="true" /> Private code
+              </span>
+            ) : project.repository ? (
               <a className="wk-case-link" href={project.repository} target="_blank" rel="noreferrer">
                 GitHub <Arrow />
               </a>
