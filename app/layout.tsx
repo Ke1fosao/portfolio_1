@@ -9,6 +9,7 @@ import "./digital-workshop-hero-fit.css";
 import "./about-story.css";
 import "./about-portrait-hero.css";
 import "./about-portrait-content.css";
+import "./work-cinema.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
