@@ -74,7 +74,7 @@ function FancyScene() {
     <SceneShell slug="fancy" title="FÁNCY">
       <div className="wk-fancy-editorial">
         <div className="wk-fancy-photo"><span>F</span><i /></div>
-        <div className="wk-fancy-copy"><small>BEAUTY HOUSE / RIVNE</small><strong>Краса, яка починається з відчуття.</strong><p>Hair · Nails · Brows · Make-up</p><button type="button">Записатися</button></div>
+        <div className="wk-fancy-copy"><small>BEAUTY HOUSE / RIVNE</small><strong>Краса, яка починається з відчуття.</strong><p>Hair · Nails · Brows · Make-up</p><span className="wk-fancy-cta">Записатися</span></div>
       </div>
       <div className="wk-fancy-card is-a">Hair<br /><strong>від 650 ₴</strong></div>
       <div className="wk-fancy-card is-b">Brows<br /><strong>від 350 ₴</strong></div>
