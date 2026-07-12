@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BabylandDocumentary } from "@/components/work/babyland/babyland-documentary";
+import { Dnz52Documentary } from "@/components/work/dnz52/dnz52-documentary";
 import { getProject, projects } from "@/data/projects";
 
 type ProjectPageProps = {
@@ -24,6 +25,13 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     };
   }
 
+  if (slug === "dnz52") {
+    return {
+      title: "ЗДО №52 — React, Django, PWA та AI-платформа",
+      description: "Детальний case study ЗДО №52: публічний портал, React-адмінпанель, Django REST API, онлайн-зарахування, PWA, push, AI, Supabase та безпека."
+    };
+  }
+
   return { title: project.title, description: project.description };
 }
 
@@ -34,6 +42,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   if (slug === "babyland") {
     return <BabylandDocumentary />;
+  }
+
+  if (slug === "dnz52") {
+    return <Dnz52Documentary />;
   }
 
   return (
