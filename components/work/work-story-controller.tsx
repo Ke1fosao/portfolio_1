@@ -6,6 +6,7 @@ export function WorkStoryController() {
   useEffect(() => {
     const root = document.querySelector<HTMLElement>("[data-work-root]");
     const chapters = Array.from(document.querySelectorAll<HTMLElement>("[data-work-chapter]"));
+    const navigationLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-work-nav]"));
 
     if (!root || chapters.length === 0) return;
 
@@ -13,6 +14,16 @@ export function WorkStoryController() {
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let frameId = 0;
+
+    const setActiveCase = (activeIndex: number) => {
+      root.dataset.activeCase = String(activeIndex);
+      navigationLinks.forEach((link, index) => {
+        const isActive = index === activeIndex;
+        link.classList.toggle("is-active", isActive);
+        if (isActive) link.setAttribute("aria-current", "true");
+        else link.removeAttribute("aria-current");
+      });
+    };
 
     const updateProgress = () => {
       const rect = root.getBoundingClientRect();
@@ -27,13 +38,13 @@ export function WorkStoryController() {
       frameId = window.requestAnimationFrame(updateProgress);
     };
 
+    setActiveCase(0);
     updateProgress();
     window.addEventListener("scroll", requestProgressUpdate, { passive: true });
     window.addEventListener("resize", requestProgressUpdate);
 
     if (reducedMotion || !("IntersectionObserver" in window)) {
       chapters.forEach((chapter) => chapter.classList.add("is-visible"));
-      root.dataset.activeCase = "0";
 
       return () => {
         root.classList.remove("wk-motion-ready");
@@ -62,7 +73,7 @@ export function WorkStoryController() {
           }
         });
 
-        root.dataset.activeCase = String(activeIndex);
+        setActiveCase(activeIndex);
       },
       {
         rootMargin: "-14% 0px -20% 0px",
