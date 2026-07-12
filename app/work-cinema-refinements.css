@@ -1,0 +1,39 @@
+.wk-case.wk-accent-violet { --case-accent: #9d7cff; --case-soft: #d8ceff; }
+.wk-case.wk-accent-blue { --case-accent: #5e8fff; --case-soft: #bcd1ff; }
+.wk-case.wk-accent-amber { --case-accent: #ffb83e; --case-soft: #ffe0a5; }
+.wk-case.wk-accent-rose { --case-accent: #ff749d; --case-soft: #ffc5d6; }
+.wk-case.wk-accent-green { --case-accent: #7fd65d; --case-soft: #c9efb8; }
+.wk-case.wk-accent-cyan { --case-accent: #56d9e6; --case-soft: #b7f2f5; }
+.wk-case.wk-accent-orange { --case-accent: #ff875f; --case-soft: #ffd0bf; }
+.wk-case.wk-accent-indigo { --case-accent: #7b84ff; --case-soft: #c8ccff; }
+
+.wk-fancy-cta {
+  display: inline-flex;
+  width: max-content;
+  min-height: 34px;
+  align-items: center;
+  padding: 0 14px;
+  border-radius: 999px;
+  color: white;
+  background: #6f273f;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.wk-case.is-featured .wk-scene {
+  box-shadow: 0 42px 120px color-mix(in srgb, var(--case-accent) 13%, rgba(12, 18, 11, .14));
+}
+
+.wk-case.is-visible .wk-scene {
+  border-color: color-mix(in srgb, var(--case-accent) 36%, var(--wk-line));
+}
+
+@media (min-width: 1600px) {
+  .wk-case-sticky {
+    width: min(1580px, calc(100% - 96px));
+  }
+
+  .wk-scene {
+    min-height: min(720px, 66vh);
+  }
+}
