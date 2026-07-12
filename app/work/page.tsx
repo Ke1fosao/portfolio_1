@@ -15,10 +15,17 @@ function Arrow() {
 }
 
 export default function WorkPage() {
-  const completed = projects.filter((project) => project.status === "Завершено");
+  const babyland = projects.find((project) => project.slug === "babyland");
+  const aiManager = projects.find((project) => project.slug === "ai-sales-manager");
+  const dnz52 = projects.find((project) => project.slug === "dnz52");
   const active = projects.filter((project) => project.status === "У процесі");
+  const completed = projects.filter((project) => project.status === "Завершено");
   const concepts = projects.filter((project) => project.status === "Концепт");
-  const orderedProjects = [...completed, ...active, ...concepts];
+
+  const featuredProjects = [babyland, aiManager].filter(Boolean) as typeof projects;
+  const completedProjects = [dnz52].filter(Boolean) as typeof projects;
+  const orderedProjects = [...featuredProjects, ...completedProjects, ...active];
+
   const navigationItems = [
     { href: "#work-top", label: "Вступ" },
     ...orderedProjects.map((project) => ({ href: `#case-${project.slug}`, label: project.title })),
@@ -80,7 +87,7 @@ export default function WorkPage() {
               <div className="wk-hero-orbit is-two" />
               <div className="wk-hero-orbit is-three" />
               <div className="wk-hero-center"><small>PORTFOLIO</small><strong>{projects.length}</strong><span>PROJECTS</span></div>
-              {projects.slice(0, 6).map((project, index) => (
+              {orderedProjects.slice(0, 6).map((project, index) => (
                 <span className={`wk-hero-project is-${index + 1}`} key={project.slug}>{project.title}</span>
               ))}
             </div>
@@ -97,14 +104,14 @@ export default function WorkPage() {
 
       <section className="wk-section-heading wk-section-heading-completed">
         <div>
-          <span>01 / Реалізовані</span>
-          <h2>Системи, які вже пройшли шлях від ідеї до запуску.</h2>
+          <span>01 / Головні напрями</span>
+          <h2>Від повноцінної платформи до автономного AI-менеджера.</h2>
         </div>
-        <p>Два головні завершені кейси — з ролями, базою даних, адміністративною логікою, безпекою та реальними сценаріями використання.</p>
+        <p>BabyLand показує масштаб завершеної екосистеми, а AI Sales Manager — напрям автоматизації продажів і комунікації з клієнтами.</p>
       </section>
 
-      <section className="wk-cases" aria-label="Завершені проєкти">
-        {completed.map((project, index) => (
+      <section className="wk-cases" aria-label="Головні проєкти">
+        {featuredProjects.map((project, index) => (
           <CinematicProject
             key={project.slug}
             project={project}
@@ -115,9 +122,29 @@ export default function WorkPage() {
         ))}
       </section>
 
+      <section className="wk-section-heading wk-section-heading-completed">
+        <div>
+          <span>02 / Завершена платформа</span>
+          <h2>ЗДО №52 — цифрова система для публічного сайту й щоденної роботи закладу.</h2>
+        </div>
+        <p>Окремий великий кейс із React-адмінпанеллю, Django API, PWA, push-сповіщеннями, онлайн-зарахуванням, AI та посиленими захисними механізмами.</p>
+      </section>
+
+      <section className="wk-cases" aria-label="Завершені освітні платформи">
+        {completedProjects.map((project, index) => (
+          <CinematicProject
+            key={project.slug}
+            project={project}
+            index={featuredProjects.length + index}
+            reverse
+            featured
+          />
+        ))}
+      </section>
+
       <section className="wk-section-heading wk-section-heading-active">
         <div>
-          <span>02 / У виробництві</span>
+          <span>03 / У виробництві</span>
           <h2>Різні бізнеси. Різні задачі. Одна вимога — продукт має працювати.</h2>
         </div>
         <p>Активні проєкти показують роботу з beauty, automotive, освітою, мовними курсами та приватними дитячими закладами.</p>
@@ -128,27 +155,8 @@ export default function WorkPage() {
           <CinematicProject
             key={project.slug}
             project={project}
-            index={completed.length + index}
+            index={featuredProjects.length + completedProjects.length + index}
             reverse={index % 2 === 0}
-          />
-        ))}
-      </section>
-
-      <section className="wk-section-heading wk-section-heading-ai">
-        <div>
-          <span>03 / Дослідження</span>
-          <h2>Наступний рівень — система, яка сама веде діалог із клієнтом.</h2>
-        </div>
-        <p>AI Sales Manager — окремий концепт Telegram-менеджера для кваліфікації звернень, підготовки брифу й передачі домовленостей розробнику.</p>
-      </section>
-
-      <section className="wk-cases wk-cases-concept" aria-label="Концептуальні проєкти">
-        {concepts.map((project, index) => (
-          <CinematicProject
-            key={project.slug}
-            project={project}
-            index={completed.length + active.length + index}
-            featured
           />
         ))}
       </section>
