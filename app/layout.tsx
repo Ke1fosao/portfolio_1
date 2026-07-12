@@ -3,8 +3,10 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://portfolio.example.com"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Дмитро Ковтунович — Full-stack developer",
     template: "%s — Дмитро Ковтунович"
@@ -23,7 +25,8 @@ export const metadata: Metadata = {
     title: "Дмитро Ковтунович — Full-stack developer",
     description: "Сайти та цифрові продукти, які працюють на бізнес.",
     type: "website",
-    locale: "uk_UA"
+    locale: "uk_UA",
+    url: siteUrl
   },
   robots: { index: true, follow: true }
 };
