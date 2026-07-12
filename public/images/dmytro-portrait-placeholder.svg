@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" role="img" aria-labelledby="title desc">
+  <title id="title">Тимчасове місце для портрета Дмитра</title>
+  <desc id="desc">Абстрактна графічна заглушка, яку потрібно замінити реальним фото.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#151912"/>
+      <stop offset=".48" stop-color="#273127"/>
+      <stop offset="1" stop-color="#0d100c"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="22%" cy="18%" r="70%">
+      <stop offset="0" stop-color="#b7ff3c" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#b7ff3c" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="80%" cy="72%" r="65%">
+      <stop offset="0" stop-color="#72e9db" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#72e9db" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 .18 0"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#bg)"/>
+  <rect width="1200" height="1600" fill="url(#glowA)"/>
+  <rect width="1200" height="1600" fill="url(#glowB)"/>
+  <g opacity=".22" stroke="#f3f0e8" fill="none">
+    <circle cx="600" cy="720" r="310"/>
+    <circle cx="600" cy="720" r="430" stroke-dasharray="10 18"/>
+    <path d="M0 260h1200M0 520h1200M0 780h1200M0 1040h1200M0 1300h1200"/>
+    <path d="M240 0v1600M480 0v1600M720 0v1600M960 0v1600"/>
+  </g>
+  <g transform="translate(600 735)" text-anchor="middle">
+    <text y="-10" fill="#f3f0e8" font-family="Arial, sans-serif" font-size="310" font-weight="800" letter-spacing="-45">DK</text>
+    <text y="105" fill="#b7ff3c" font-family="Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="8">PORTRAIT PLACEHOLDER</text>
+  </g>
+  <g fill="#f3f0e8" font-family="Arial, sans-serif">
+    <text x="70" y="90" font-size="22" font-weight="700" letter-spacing="5">DMYTRO KOVTUNOVYCH</text>
+    <text x="70" y="130" font-size="16" opacity=".55" letter-spacing="4">REPLACE WITH REAL PHOTO</text>
+    <text x="70" y="1510" font-size="18" opacity=".65" letter-spacing="4">FULL-STACK DEVELOPER · RIVNE / UA</text>
+  </g>
+  <rect width="1200" height="1600" filter="url(#noise)" opacity=".18"/>
+</svg>
