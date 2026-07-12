@@ -31,41 +31,51 @@ export default function HomePage() {
 
       <section className="dw-hero">
         <div className="dw-noise" aria-hidden="true" />
-        <div className="dw-hero-meta">
-          <span>Full-stack developer</span>
-          <span>Рівне / Remote</span>
-        </div>
 
-        <div className="dw-hero-title-wrap">
-          <p className="dw-overline">Digital workshop for ambitious business</p>
-          <h1>
-            Ваш бізнес уже працює.
-            <span>Тепер змусимо сайт працювати разом із ним.</span>
-          </h1>
-        </div>
-
-        <div className="dw-hero-bottom">
-          <div className="dw-hero-copy">
-            <p>
-              Я створюю не просто сторінки, а цілі цифрові системи: сайт, заявки, Telegram,
-              адмінпанель, автоматизація та AI — зібрані в один зрозумілий продукт.
-            </p>
-            <div className="dw-actions">
-              <a className="dw-action dw-action-primary" href="https://t.me/Ke1fosao" target="_blank" rel="noreferrer">
-                Обговорити сайт <Arrow />
-              </a>
-              <a className="dw-action dw-action-secondary" href="#cases">Подивитися роботи ↓</a>
-            </div>
+        <div className="dw-hero-frame">
+          <div className="dw-hero-meta">
+            <span>Full-stack developer</span>
+            <span>Рівне / Remote</span>
           </div>
-          <WorkshopScene />
-        </div>
 
-        <div className="dw-scroll-mark" aria-hidden="true">
-          <span>scroll</span><i />
+          <div className="dw-hero-layout">
+            <div className="dw-hero-content">
+              <p className="dw-overline">Digital workshop for ambitious business</p>
+              <h1>
+                Ваш бізнес уже працює.
+                <span>Змусимо сайт працювати разом із ним.</span>
+              </h1>
+
+              <p className="dw-hero-description">
+                Створюю не просто сторінки, а цілі цифрові системи: сайт, заявки, Telegram,
+                адмінпанель, автоматизація та AI — в одному зрозумілому продукті.
+              </p>
+
+              <div className="dw-actions">
+                <a className="dw-action dw-action-primary" href="https://t.me/Ke1fosao" target="_blank" rel="noreferrer">
+                  Обговорити сайт <Arrow />
+                </a>
+                <a className="dw-action dw-action-secondary" href="#cases">Подивитися роботи ↓</a>
+              </div>
+
+              <div className="dw-hero-trust" aria-label="Основні характеристики">
+                <span>Адаптивність</span>
+                <span>SEO</span>
+                <span>Автоматизація</span>
+              </div>
+            </div>
+
+            <WorkshopScene />
+          </div>
+
+          <div className="dw-hero-footer">
+            <span>Web systems · Business tools · AI</span>
+            <a href="#workshop-system">Дивитися далі <i aria-hidden="true" /></a>
+          </div>
         </div>
       </section>
 
-      <section className="dw-statement" data-home-reveal>
+      <section className="dw-statement" id="workshop-system" data-home-reveal>
         <p>Не “зробити красиво”.</p>
         <h2>Зібрати систему, яка пояснює, переконує, приймає заявки й економить час.</h2>
       </section>
