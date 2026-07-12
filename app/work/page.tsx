@@ -19,12 +19,33 @@ export default function WorkPage() {
   const active = projects.filter((project) => project.status === "У процесі");
   const concepts = projects.filter((project) => project.status === "Концепт");
   const orderedProjects = [...completed, ...active, ...concepts];
+  const navigationItems = [
+    { href: "#work-top", label: "Вступ" },
+    ...orderedProjects.map((project) => ({ href: `#case-${project.slug}`, label: project.title })),
+    { href: "#work-final", label: "Контакт" }
+  ];
 
   return (
     <div className="wk-page" data-work-root data-active-case="0">
       <WorkStoryController />
 
-      <section className="wk-hero" data-work-chapter aria-labelledby="work-title">
+      <aside className="wk-section-nav" aria-label="Навігація сторінкою робіт">
+        <nav>
+          {navigationItems.map((item, index) => (
+            <a
+              href={item.href}
+              data-work-nav={index}
+              aria-current={index === 0 ? "true" : undefined}
+              key={item.href}
+            >
+              <i aria-hidden="true" />
+              <span>{item.label}</span>
+            </a>
+          ))}
+        </nav>
+      </aside>
+
+      <section className="wk-hero" id="work-top" data-work-chapter aria-labelledby="work-title">
         <div className="wk-hero-grid" aria-hidden="true" />
         <div className="wk-hero-glow is-left" aria-hidden="true" />
         <div className="wk-hero-glow is-right" aria-hidden="true" />
@@ -73,13 +94,6 @@ export default function WorkPage() {
           </div>
         </div>
       </section>
-
-      <aside className="wk-progress" aria-label="Прогрес перегляду проєктів">
-        <div className="wk-progress-line"><i /></div>
-        <span>00</span>
-        <strong>CASE STUDIES</strong>
-        <span>{String(orderedProjects.length).padStart(2, "0")}</span>
-      </aside>
 
       <section className="wk-section-heading wk-section-heading-completed">
         <div>
@@ -141,7 +155,7 @@ export default function WorkPage() {
 
       <ProjectIndex projects={orderedProjects} />
 
-      <section className="wk-final" data-work-chapter>
+      <section className="wk-final" id="work-final" data-work-chapter>
         <div className="wk-final-grid" aria-hidden="true" />
         <div className="wk-final-index" aria-hidden="true">NEXT</div>
         <div className="wk-final-copy">
