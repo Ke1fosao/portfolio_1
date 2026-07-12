@@ -31,8 +31,8 @@ const chapters = [
   ["02", "Екосистема"],
   ["03", "Користувачі"],
   ["04", "Заявки"],
-  ["05", "Адмінка"],
-  ["06", "Доступ"],
+  ["05", "Адмінпанель"],
+  ["06", "Ролі"],
   ["07", "Безпека"],
   ["08", "Архітектура"],
   ["09", "Продукт"],
@@ -42,6 +42,18 @@ const chapters = [
 
 function Arrow() {
   return <span aria-hidden="true">↗</span>;
+}
+
+function PrivateRepositoryNotice({ compact = false }: { compact?: boolean }) {
+  return (
+    <span className={`bl-private-repository${compact ? " is-compact" : ""}`} role="note">
+      <i aria-hidden="true" />
+      <span>
+        <strong>Приватний репозиторій</strong>
+        {!compact ? <small>Вихідний код не публікується. Технічні рішення показані в цьому кейсі.</small> : null}
+      </span>
+    </span>
+  );
 }
 
 function SectionHeading({ index, label, title, text }: { index: string; label: string; title: string; text?: string }) {
@@ -62,12 +74,17 @@ export function BabylandDocumentary() {
     <div className="bl-page" data-babyland-root data-active-chapter="0">
       <BabylandStoryController />
 
-      <aside className="bl-progress" aria-label="Розділи кейсу BabyLand">
-        <div className="bl-progress-line"><i /></div>
+      <aside className="bl-section-nav" aria-label="Розділи кейсу BabyLand">
         <nav>
           {chapters.map(([number, label], index) => (
-            <a href={index === 0 ? "#babyland-top" : `#babyland-${index}`} data-bl-rail={index} key={number}>
-              <span>{number}</span><small>{label}</small>
+            <a
+              href={index === 0 ? "#babyland-top" : `#babyland-${index}`}
+              data-babyland-nav={index}
+              aria-current={index === 0 ? "true" : undefined}
+              key={number}
+            >
+              <i aria-hidden="true" />
+              <span>{label}</span>
             </a>
           ))}
         </nav>
@@ -94,8 +111,11 @@ export function BabylandDocumentary() {
               </p>
               <div className="bl-hero-actions">
                 <a className="bl-button is-primary" href="https://babyland.com.ua/" target="_blank" rel="noreferrer">Відкрити BabyLand <Arrow /></a>
-                <a className="bl-button" href="https://github.com/Ke1fosao/BabyLand" target="_blank" rel="noreferrer">Переглянути GitHub <Arrow /></a>
+                <PrivateRepositoryNotice compact />
                 <a className="bl-text-link" href="#babyland-1">Дивитися історію <span>↓</span></a>
+              </div>
+              <div className="bl-private-context">
+                <PrivateRepositoryNotice />
               </div>
               <div className="bl-hero-facts">
                 <div><strong>6</strong><span>рольових рівнів</span></div>
@@ -142,7 +162,7 @@ export function BabylandDocumentary() {
               {babylandModules.map((module, index) => (
                 <article key={module.title}>
                   <span>{String(index + 1).padStart(2, "0")}</span>
-                  <div><h3>{module.title}</h3><p>{module.description}</p><ul>{module.items.map((item) => <li key={item}>{item}</li>)}</ul></div>
+                  <div className="bl-list-content"><h3>{module.title}</h3><p>{module.description}</p><ul>{module.items.map((item) => <li key={item}>{item}</li>)}</ul></div>
                 </article>
               ))}
             </div>
@@ -206,7 +226,12 @@ export function BabylandDocumentary() {
             <div className="bl-role-list">
               {babylandRoles.map((role) => (
                 <article key={role.id}>
-                  <span>{role.id}</span><h3>{role.title}</h3><p>{role.scope}</p><ul>{role.permissions.map((permission) => <li key={permission}>{permission}</li>)}</ul>
+                  <span>{role.id}</span>
+                  <div className="bl-list-content">
+                    <h3>{role.title}</h3>
+                    <p>{role.scope}</p>
+                    <ul>{role.permissions.map((permission) => <li key={permission}>{permission}</li>)}</ul>
+                  </div>
                 </article>
               ))}
             </div>
@@ -234,7 +259,12 @@ export function BabylandDocumentary() {
               а додаткові бібліотеки закривають редагування, графіки, форми та drag-and-drop.
             </p>
             <div className="bl-architecture-list">
-              {babylandArchitecture.map((node) => <article key={node.layer}><span>{node.layer}</span><h3>{node.title}</h3><p>{node.detail}</p></article>)}
+              {babylandArchitecture.map((node) => (
+                <article key={node.layer}>
+                  <span>{node.layer}</span>
+                  <div className="bl-list-content"><h3>{node.title}</h3><p>{node.detail}</p></div>
+                </article>
+              ))}
             </div>
             <div className="bl-tool-cloud">{babylandTools.map((tool) => <span key={tool}>{tool}</span>)}</div>
           </div>
@@ -276,7 +306,7 @@ export function BabylandDocumentary() {
           </p>
           <div className="bl-result-actions">
             <a className="bl-button is-primary" href="https://babyland.com.ua/" target="_blank" rel="noreferrer">Відкрити живий продукт <Arrow /></a>
-            <a className="bl-button" href="https://github.com/Ke1fosao/BabyLand" target="_blank" rel="noreferrer">Переглянути код <Arrow /></a>
+            <PrivateRepositoryNotice compact />
             <a className="bl-button" href="https://t.me/Ke1fosao" target="_blank" rel="noreferrer">Обговорити схожу систему <Arrow /></a>
             <Link className="bl-text-link" href="/work">Повернутися до робіт</Link>
           </div>
