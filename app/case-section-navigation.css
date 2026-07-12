@@ -1,0 +1,241 @@
+/* Shared editorial section navigation for /work and /work/babyland */
+.bl-section-nav,
+.wk-section-nav {
+  position: fixed;
+  top: 50%;
+  left: clamp(18px, 1.8vw, 34px);
+  z-index: 64;
+  width: 176px;
+  transform: translateY(-50%);
+}
+
+.bl-section-nav::before,
+.wk-section-nav::before {
+  content: "";
+  position: absolute;
+  inset: -22px -16px;
+  z-index: -1;
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--bl-paper, var(--wk-paper)) 88%, transparent);
+  box-shadow: 0 16px 44px rgba(13, 24, 16, .08);
+  backdrop-filter: blur(18px);
+  opacity: .92;
+}
+
+.bl-section-nav nav,
+.wk-section-nav nav {
+  display: grid;
+  gap: 13px;
+}
+
+.bl-section-nav a,
+.wk-section-nav a {
+  display: flex;
+  min-height: 24px;
+  align-items: center;
+  gap: 11px;
+  color: var(--bl-muted, var(--wk-muted));
+  font-size: 12px;
+  font-weight: 520;
+  letter-spacing: -.01em;
+  line-height: 1.2;
+  opacity: .58;
+  transition: color .22s ease, opacity .22s ease, transform .22s ease;
+}
+
+.bl-section-nav a i,
+.wk-section-nav a i {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 1px;
+  background: currentColor;
+  opacity: .52;
+  transition: width .25s ease, opacity .25s ease;
+}
+
+.bl-section-nav a:hover,
+.wk-section-nav a:hover,
+.bl-section-nav a.is-active,
+.wk-section-nav a.is-active,
+.bl-section-nav a[aria-current="true"],
+.wk-section-nav a[aria-current="true"] {
+  color: var(--bl-ink, var(--wk-ink));
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+.bl-section-nav a.is-active i,
+.wk-section-nav a.is-active i,
+.bl-section-nav a[aria-current="true"] i,
+.wk-section-nav a[aria-current="true"] i {
+  width: 32px;
+  opacity: 1;
+}
+
+/* Reserve a clean editorial gutter for the fixed navigation. */
+@media (min-width: 1281px) {
+  .bl-hero-inner,
+  .bl-section-inner,
+  .bl-result-inner {
+    padding-left: clamp(155px, 10vw, 195px);
+  }
+
+  .wk-hero-inner,
+  .wk-section-heading,
+  .wk-case-sticky,
+  .wk-index,
+  .wk-final {
+    padding-left: clamp(155px, 10vw, 195px);
+  }
+}
+
+/* Repair the BabyLand role and architecture lists at their structural source. */
+.bl-module-list article,
+.bl-role-list article,
+.bl-architecture-list article {
+  grid-template-columns: minmax(82px, 112px) minmax(0, 1fr);
+}
+
+.bl-list-content {
+  min-width: 0;
+}
+
+.bl-list-content h3,
+.bl-list-content p,
+.bl-list-content li {
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.bl-role-list article > span,
+.bl-architecture-list article > span {
+  align-self: start;
+  padding-top: 4px;
+  overflow-wrap: anywhere;
+  line-height: 1.35;
+}
+
+.bl-role-list .bl-list-content p,
+.bl-architecture-list .bl-list-content p {
+  max-width: 520px;
+}
+
+.bl-role-list .bl-list-content ul {
+  grid-column: auto;
+}
+
+/* Private repository treatment. */
+.bl-private-context {
+  max-width: 590px;
+  margin-top: 13px;
+}
+
+.bl-private-repository,
+.wk-case-link.is-private {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--bl-muted, var(--wk-muted));
+  border: 1px dashed color-mix(in srgb, currentColor 34%, transparent);
+  background: color-mix(in srgb, var(--bl-paper, var(--wk-paper)) 72%, transparent);
+  cursor: default;
+}
+
+.bl-private-repository {
+  width: 100%;
+  padding: 13px 15px;
+  border-radius: 16px;
+}
+
+.bl-private-repository.is-compact {
+  width: auto;
+  min-height: 50px;
+  padding: 0 17px;
+  border-radius: 999px;
+}
+
+.bl-private-repository > i,
+.wk-case-link.is-private > i {
+  position: relative;
+  flex: 0 0 auto;
+  width: 14px;
+  height: 11px;
+  border: 1.5px solid currentColor;
+  border-radius: 3px;
+}
+
+.bl-private-repository > i::before,
+.wk-case-link.is-private > i::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  width: 8px;
+  height: 7px;
+  border: 1.5px solid currentColor;
+  border-bottom: 0;
+  border-radius: 7px 7px 0 0;
+  transform: translateX(-50%);
+}
+
+.bl-private-repository > span {
+  display: grid;
+  gap: 3px;
+}
+
+.bl-private-repository strong {
+  color: var(--bl-ink);
+  font-size: 11px;
+  letter-spacing: .01em;
+}
+
+.bl-private-repository small {
+  max-width: 480px;
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.bl-private-repository.is-compact strong {
+  color: var(--bl-muted);
+  font-size: 10px;
+}
+
+.wk-case-link.is-private {
+  min-height: 50px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  pointer-events: none;
+}
+
+/* Do not let the editorial rail crowd tablet and mobile layouts. */
+@media (max-width: 1280px) {
+  .bl-section-nav,
+  .wk-section-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .bl-private-context {
+    margin-top: 10px;
+  }
+
+  .bl-private-repository.is-compact {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .bl-private-repository small {
+    font-size: 8px;
+  }
+
+  .bl-module-list article,
+  .bl-role-list article,
+  .bl-architecture-list article {
+    grid-template-columns: 68px minmax(0, 1fr);
+    gap: 14px;
+  }
+}
