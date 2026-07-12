@@ -5,6 +5,7 @@ import "./globals.css";
 import "./header.css";
 import "./header-refinements.css";
 import "./digital-workshop.css";
+import "./digital-workshop-hero-fit.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
