@@ -9,6 +9,8 @@ export function AboutStoryController() {
 
     if (!root || chapters.length === 0) return;
 
+    root.classList.add("ab-motion-ready");
+
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let frameId = 0;
 
@@ -34,6 +36,7 @@ export function AboutStoryController() {
       root.dataset.activeChapter = "0";
 
       return () => {
+        root.classList.remove("ab-motion-ready");
         window.removeEventListener("scroll", handleScroll);
         window.removeEventListener("resize", handleScroll);
         if (frameId) window.cancelAnimationFrame(frameId);
@@ -75,6 +78,7 @@ export function AboutStoryController() {
 
     return () => {
       observer.disconnect();
+      root.classList.remove("ab-motion-ready");
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
       if (frameId) window.cancelAnimationFrame(frameId);
