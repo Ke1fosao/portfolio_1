@@ -76,7 +76,7 @@ export function CinematicProject({ project, index, reverse = false, featured = f
         <div className="wk-case-visual">
           <ProjectScene slug={project.slug} title={project.title} />
           <div className="wk-case-caption">
-            <span>{projectNumber} / {String(index + 1).padStart(2, "0")}</span>
+            <span>CASE / {projectNumber}</span>
             <strong>{project.description}</strong>
           </div>
         </div>
