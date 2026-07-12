@@ -16,23 +16,29 @@ export function AboutPortraitHero() {
         </div>
 
         <div className="ab-portrait-intro">
-          <p className="ab-kicker">Full-stack developer</p>
+          <p className="ab-kicker">Full-stack developer · 4 роки у веброзробці</p>
           <h1 id="about-title">
-            Ковтунович
-            <span>Дмитро Валерійович</span>
+            Привіт, я Дмитро.
+            <span>Збираю цифрові продукти повністю.</span>
           </h1>
           <p className="ab-portrait-role">
-            Створюю сучасні сайти, вебсистеми, адмінпанелі та AI-автоматизацію для бізнесу.
+            Мене звати Ковтунович Дмитро Валерійович. Я створюю не лише красиві сторінки,
+            а цілі вебсистеми: продумую інтерфейс, пишу frontend і backend, працюю з базами даних,
+            адмінпанелями, Telegram та AI-автоматизацією.
+          </p>
+          <p className="ab-portrait-note">
+            Навчаюся у ВСП «Рівненський фаховий коледж НУБіП України» й перетворюю навчальний досвід
+            на реальні рішення для бізнесу — від першої ідеї до готового запуску.
           </p>
         </div>
 
         <dl className="ab-profile-facts">
           <div>
-            <dt>Вік</dt>
-            <dd>18 років</dd>
+            <dt>Хто я</dt>
+            <dd>18-річний full-stack розробник</dd>
           </div>
           <div>
-            <dt>Місто</dt>
+            <dt>Звідки</dt>
             <dd>Рівне, Україна</dd>
           </div>
           <div className="is-wide">
@@ -40,12 +46,12 @@ export function AboutPortraitHero() {
             <dd>ВСП «Рівненський фаховий коледж НУБіП України»</dd>
           </div>
           <div>
-            <dt>Напрям</dt>
-            <dd>Full-stack розробка</dd>
+            <dt>Створюю</dt>
+            <dd>Сайти, системи та автоматизацію</dd>
           </div>
           <div>
-            <dt>Досвід</dt>
-            <dd>4 роки у веброзробці</dd>
+            <dt>Працюю з</dt>
+            <dd>Next.js, TypeScript, Django, Python</dd>
           </div>
         </dl>
 
@@ -59,20 +65,20 @@ export function AboutPortraitHero() {
         </div>
 
         <div className="ab-portrait-footer">
-          <span>Next.js · TypeScript · Django · Python</span>
-          <a href="#story">Моя історія <span aria-hidden="true">↓</span></a>
+          <span>Frontend · Backend · Database · AI</span>
+          <a href="#story">Продовжити мою історію <span aria-hidden="true">↓</span></a>
         </div>
       </div>
 
       <figure className="ab-portrait-photo">
         <img
-          src="/images/dmytro-portrait-placeholder.svg"
-          alt="Тимчасове місце для портрета Дмитра Ковтуновича"
+          src="/images/dmytro-portrait.svg"
+          alt="Дмитро Ковтунович — full-stack розробник із Рівного"
         />
         <div className="ab-portrait-photo-shade" aria-hidden="true" />
         <figcaption>
           <span>Дмитро Ковтунович</span>
-          <strong>Full-stack developer</strong>
+          <strong>Створюю продукти від ідеї до запуску</strong>
         </figcaption>
         <div className="ab-photo-status" aria-hidden="true">
           <i /> Доступний для нових проєктів
