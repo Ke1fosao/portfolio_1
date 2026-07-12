@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { BabylandDocumentary } from "@/components/work/babyland/babyland-documentary";
 import { getProject, projects } from "@/data/projects";
 
 type ProjectPageProps = {
@@ -15,6 +16,14 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
+
+  if (slug === "babyland") {
+    return {
+      title: "BabyLand — full-stack продуктова екосистема",
+      description: "Детальний case study BabyLand: публічний сайт, заявки, адмінпанель, ролі, Firebase-архітектура, безпека та щоденні операції дитячого закладу."
+    };
+  }
+
   return { title: project.title, description: project.description };
 }
 
@@ -22,6 +31,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();
+
+  if (slug === "babyland") {
+    return <BabylandDocumentary />;
+  }
 
   return (
     <div className="page-shell inner-page project-detail">
