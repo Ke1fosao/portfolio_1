@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -95,21 +96,24 @@ export function SiteNav() {
   return (
     <nav className="main-nav" aria-label="Головна навігація">
       <div className="nav-links">
-        {navigationItems.map((item) => {
+        {navigationItems.map((item, index) => {
           const active = isActivePath(pathname, item.href);
 
           return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`nav-item${item.iconOnly ? " nav-item-icon-only" : ""}${active ? " nav-item-active" : ""}`}
-              aria-current={active ? "page" : undefined}
-              aria-label={item.iconOnly ? item.label : undefined}
-              style={{ flex: "0 0 auto", textAlign: "left" }}
-            >
-              <NavIcon name={item.icon} />
-              <span className={item.iconOnly ? "visually-hidden" : "nav-label"}>{item.label}</span>
-            </Link>
+            <Fragment key={item.href}>
+              <Link
+                href={item.href}
+                className={`nav-item${item.iconOnly ? " nav-item-icon-only" : ""}${active ? " nav-item-active" : ""}`}
+                aria-current={active ? "page" : undefined}
+                aria-label={item.iconOnly ? item.label : undefined}
+                style={{ flex: "0 0 auto", textAlign: "left" }}
+              >
+                <NavIcon name={item.icon} />
+                <span className={item.iconOnly ? "visually-hidden" : "nav-label"}>{item.label}</span>
+              </Link>
+
+              {index === 0 ? <span className="home-nav-divider" aria-hidden="true" /> : null}
+            </Fragment>
           );
         })}
 
