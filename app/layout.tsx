@@ -2,8 +2,26 @@ import type { Metadata } from "next";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
+import "./header.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
+const themeInitializationScript = `
+(function () {
+  try {
+    var storedTheme = window.localStorage.getItem("theme");
+    var hasStoredTheme = storedTheme === "light" || storedTheme === "dark";
+    var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    var theme = hasStoredTheme ? storedTheme : (prefersDark ? "dark" : "light");
+
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+  } catch (error) {
+    document.documentElement.dataset.theme = "light";
+    document.documentElement.style.colorScheme = "light";
+  }
+})();
+`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -34,6 +52,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="uk" suppressHydrationWarning>
+      <head>
+        <meta name="color-scheme" content="light dark" />
+        <script dangerouslySetInnerHTML={{ __html: themeInitializationScript }} />
+      </head>
       <body>
         <SiteHeader />
         <main>{children}</main>
