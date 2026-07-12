@@ -12,6 +12,7 @@ import "./about-portrait-content.css";
 import "./work-cinema.css";
 import "./work-cinema-refinements.css";
 import "./babyland-documentary.css";
+import "./case-section-navigation.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
