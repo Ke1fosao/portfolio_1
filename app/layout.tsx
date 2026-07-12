@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 import "./header.css";
 import "./header-refinements.css";
+import "./home.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
