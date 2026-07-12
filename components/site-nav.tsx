@@ -105,6 +105,7 @@ export function SiteNav() {
               className={`nav-item${item.iconOnly ? " nav-item-icon-only" : ""}${active ? " nav-item-active" : ""}`}
               aria-current={active ? "page" : undefined}
               aria-label={item.iconOnly ? item.label : undefined}
+              style={{ flex: "0 0 auto", textAlign: "left" }}
             >
               <NavIcon name={item.icon} />
               <span className={item.iconOnly ? "visually-hidden" : "nav-label"}>{item.label}</span>
