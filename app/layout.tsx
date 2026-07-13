@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
@@ -14,6 +15,7 @@ import "./work-cinema-refinements.css";
 import "./babyland-documentary.css";
 import "./case-section-navigation.css";
 import "./dnz52-documentary.css";
+import "./scroll-to-top.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -71,6 +73,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />
+        <ScrollToTop />
       </body>
     </html>
   );
